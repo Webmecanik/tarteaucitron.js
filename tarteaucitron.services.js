@@ -927,13 +927,13 @@ tarteaucitron.services.automation = {
     "cookies": ['mautic_referer_id', 'mautic_session_id', 'mautic_session_name'],
     "js": function () {
         "use strict";
-        if (tarteaucitron.user.automationUrl === undefined) {
+        if (tarteaucitron.user.automationPrefix === undefined) {
             return;
         }
         (function(w,d,t,u,n,a,m){w['MauticTrackingObject']=n;
             w[n]=w[n]||function(){(w[n].q=w[n].q||[]).push(arguments)},a=d.createElement(t),
             m=d.getElementsByTagName(t)[0];a.async=1;a.src=u;m.parentNode.insertBefore(a,m)
-        })(window,document,'script',tarteaucitron.user.automationUrl + '/mtc.js','mt');
+        })(window,document,'script','https://'+tarteaucitron.user.automationPrefix+'.automation.webmecanik.com/mtc.js','mt');
 
         mt(
             'send',
