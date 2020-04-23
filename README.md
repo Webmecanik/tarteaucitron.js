@@ -1,5 +1,5 @@
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/SASAICAGENCY)
-
+[![](https://data.jsdelivr.com/v1/package/gh/AmauriC/tarteaucitron.js/badge)](https://www.jsdelivr.com/package/gh/AmauriC/tarteaucitron.js) 
+[![npm](https://img.shields.io/npm/v/tarteaucitronjs.svg)](https://www.npmjs.com/package/tarteaucitronjs) [![GitHub contributors](https://img.shields.io/github/contributors/AmauriC/tarteaucitron.js.svg)](https://github.com/AmauriC/tarteaucitron.js/graphs/contributors)
 
 tarteaucitron.js
 ================
@@ -19,87 +19,72 @@ Bonus:
 - Load service when user click on Allow (without reload of the page),
 - Incorporate a fallback system (display a link instead of social button and a static banner instead of advertising).
 
-## Supported services
-* Advertising network
-  * Amazon
-  * Clicmanager
-  * Criteo
-  * FERank (pub)
-  * Google Adsense
-  * Google Adsense Search (form)
-  * Google Adsense Search (result)
-  * Google Adwords (conversion)
-  * Google Adwords (remarketing)
-  * Pubdirecte
-  * Twenga
-  * vShop
 
-* APIs
-  * Google jsapi
-  * Google Maps
-  * Google Tag Manager
-  * Timeline JS
-  * Typekit (adobe)
+# Installation guide for Webmecanik Automation
 
-* Audience measurement
-  * Alexa
-  * Clicky
-  * Crazyegg
-  * FERank
-  * Get+
-  * Google Analytics (ga.js)
-  * Google Analytics (universal)
-  * StatCounter
-  * VisualRevenue
-  * Xiti
+* Download the release zip and copy the directory on your site's server.
 
-* Comment
-  * Disqus
-  * Facebook (commentaire)
-  
-* Marketing Automation & CRM
-  * Mautic
-  * Webmecanik Automation
-  
-* Social network
-  * AddThis
-  * AddToAny (feed)
-  * AddToAny (share)
-  * eKomi
-  * Facebook
-  * Facebook (like box)
-  * Google+
-  * Google+ (badge)
-  * Linkedin
-  * Pinterest
-  * Shareaholic
-  * ShareThis
-  * Twitter
-  * Twitter (cards)
-  * Twitter (timelines)
+# How to use it with Webmecanik Automation
 
-* Support
-  * UserVoice
-  * Zopim
+* Add the following code in the head tag `<head>` of your site
+* Don't forget to check the tarteaucitron directory is correctly indicated in the `src
 
-* Video
-  * Calameo
-  * Dailymotion
-  * Prezi
-  * SlideShare
-  * Vimeo
-  * YouTube
+```html
+<script type="text/javascript" src="/tarteaucitron/tarteaucitron.js"></script>
 
+<script type="text/javascript">
+tarteaucitron.init({
+    "privacyUrl": "", /* Privacy policy url */
 
-## Visitors outside the EU
-In PHP for example, you can bypass all the script by setting this var `tarteaucitron.user.bypass = true;` if the visitor is not in the EU.
+    "hashtag": "#tarteaucitron", /* Open the panel with this hashtag */
+    "cookieName": "tarteaucitron", /* Cookie name */
+    
+    "orientation": "middle", /* Banner position (top - bottom) */
+    "showAlertSmall": true, /* Show the small banner on bottom right */
+    "cookieslist": true, /* Show the cookie list */
 
-## Tested on
-- IE 6+
-- FF 3+
-- Safari 4+
-- Chrome 14+
-- Opera 10+
+    "adblocker": false, /* Show a Warning if an adblocker is detected */
+    "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+    "highPrivacy": true, /* Disable auto consent */
+    "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
 
-# Installation guide
+    "removeCredit": false, /* Remove credit link */
+    "moreInfoLink": true, /* Show more info link */
+    "useExternalCss": false, /* If false, the tarteaucitron.css file will be loaded */
+
+    //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for subdomain website */
+                          
+    "readmoreLink": "/cookiespolicy" /* Change the default readmore link pointing to opt-out.ferank.eu */
+});
+</script>
+```
+
+# Use Webmecanik service by adding the following code before the closing body tag `</body>`
+### Don't forget to replace 'webmecanikurl' by your Automation instance's url
+Exemple: 'https://my.instance.url/mtc.js'
+
+```html
+<script type="text/javascript">
+        tarteaucitron.user.webmecanikurl = 'webmecanikurl/mtc.js';
+        (tarteaucitron.job = tarteaucitron.job || []).push('webmecanik');
+</script>
+```
+## Don't forget to delete the script below from your webpage
+```html
+<script>
+    (function(w, d, t, u, n, a, m) {
+        w['MauticTrackingObject'] = n;
+        w[n] = w[n] || function() {
+            (w[n].q = w[n].q || []).push(arguments)
+        }, a = d.createElement(t), m = d.getElementsByTagName(t)[0];
+        a.async = 1;
+        a.src = u;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'webmecanikurl', 'mt');
+    mt('send', 'pageview');
+</script>
+```
+
+You can visit the tarteaucitron creator's website by clicking on the link below
 [Visit opt-out.ferank.eu](https://opt-out.ferank.eu/)
+
